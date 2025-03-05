@@ -1,2 +1,5 @@
-einops
-Pillow
+transformers>=4.30.0
+torch>=2.0.0
+torchvision>=0.15.0
+einops>=0.6.0
+pillow>=9.0.0

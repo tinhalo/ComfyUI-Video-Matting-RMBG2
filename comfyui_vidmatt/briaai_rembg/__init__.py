@@ -47,6 +47,8 @@ class BriaaiRembg:
 
         video_frames, orig_num_frames, bg_color = prepare_frames_color(video_frames, bg_color, batch_size)
         bg_color = bg_color.to(device)
+
+        # Set image transformation
         orig_frame_size = video_frames.shape[2:4]
         if fp16:
             model.half()
@@ -61,6 +63,7 @@ class BriaaiRembg:
             resized_input = F.interpolate(resized_input, size=model_input_size, mode='bilinear')
             resized_input = normalize(resized_input,[0.5,0.5,0.5],[1.0,1.0,1.0])
 
+            # Get predictions
             mask = model(resized_input)[0][0]
             mask = (mask-mask.min())/(mask.max()-mask.min())
             mask = F.interpolate(mask, size=orig_frame_size)

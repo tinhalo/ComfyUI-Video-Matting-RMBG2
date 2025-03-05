@@ -9,8 +9,10 @@ for model in os.listdir((ext_path / "comfyui_vidmatt").resolve()):
 
 from comfyui_vidmatt.robust_video_matting import RobustVideoMatting
 from comfyui_vidmatt.briaai_rembg import BriaaiRembg
+from comfyui_vidmatt.briaai_rembg_v2 import BriaaiRembgV2
 
 NODE_CLASS_MAPPINGS = {
     "Robust Video Matting": RobustVideoMatting,
-    "BRIAAI Matting": BriaaiRembg
+    "BRIAAI Matting": BriaaiRembg,
+    "BRIAAI Matting V2": BriaaiRembgV2
 }
